@@ -1,24 +1,28 @@
-# README
+# Everyleaf task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table Schema
 
-Things you may want to cover:
+- model name
+  - Task
 
-* Ruby version
+| column name | data type |
+| ----------- | --------- |
+| title       | string    |
+| dealine     | string    |
+| status      | string    |
+| priority    | string    |
+| user_id     | integer   |
+| label_id    | integer   |
 
-* System dependencies
+  - Label
 
-* Configuration
+| column name | data type |
+| ----------- | --------- |
+| name        | string    |
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  - User
+  
+| column name | data type |
+| ----------- | --------- |
+| name        | string    |
+| email       | string    |
