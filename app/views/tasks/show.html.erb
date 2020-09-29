@@ -1,0 +1,17 @@
+<div class="row mt-5">
+  <div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= @task.title %></h5>
+        <h6 class="card-subtitle badge badge- text-muted"><%= @task.status %></h6>
+        <p class="card-text"><%= @task.details %></p>
+        <p class="card-text"><%= @task.deadline %></p>
+        <p class="card-text"><%= @task.priority %></p>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+    <%= link_to "All Tasks", tasks_path, class: 'btn btn-outline-dark btn-sm' %>
+    </div>
+  </div>
+</div>
