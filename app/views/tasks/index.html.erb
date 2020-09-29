@@ -3,11 +3,12 @@
     <table class="table">
       <thead class="thead-light">
       <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Status</th>
-          <th scope="col">Deadline</th>
-          <th scope="col">Details</th>
-          <th scope="col">Priority</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Deadline</th>
+          <th>Details</th>
+          <th>Priority</th>
+          <th colspan="3">actions</th>
       </tr>
       </thead>
       <tbody>
@@ -18,6 +19,11 @@
             <td><%= task.deadline %></td>
             <td><%= task.details %></td>
             <td><%= task.priority %></td>
+            <td>
+              <%= link_to 'Show', task, class: "card-footer-item" %>
+              <%= link_to 'Edit', edit_task_path(task), class: "card-footer-item" %>
+              <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-footer-item" %>
+            </td>
         </tr>
         <% end %>
       </tbody>
