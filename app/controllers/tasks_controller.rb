@@ -28,12 +28,17 @@ class TasksController < ApplicationController
   end
 
   def update
-
+    if @task.update(task_params)
+      flash[:notice] = "Task Edited"
+      redirect_to @task
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     if @task.destroy
-      flash[:notice] = "Deleted Successfully"
+      flash[:notice] = "Task Deleted"
       redirect_to tasks_path
     end
   end
