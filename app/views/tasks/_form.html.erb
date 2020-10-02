@@ -1,13 +1,4 @@
-<% if @task.errors.any? %> 
-  <div id="error_explanation"> 
-    <h5><%= pluralize(@task.errors.count, "error") %> occurred:</h5> 
-    <ul> 
-      <% @task.errors.full_messages.each do |message| %> 
-        <li><%= message %></li> 
-      <% end %> 
-    </ul> 
-  </div> 
-<% end %> 
+<%= render 'layouts/errors' %>
 
 <div class="card">
   <div class="card-body">
@@ -34,7 +25,8 @@
         <%= f.text_area :details, class: "form-control form-control-sm", row: '6' %> 
       </div>
       <div class="text-center">
-        <%= f.submit "Save", class: "btn btn-sm btn-dark" %> 
+        <%= link_to "Cancel", tasks_path, class: 'btn btn-outline-dark btn-sm' %> 
+        <%= f.submit "Save", class: "btn btn-sm btn-info" %>
       </div>
     <% end %>
   </div>
