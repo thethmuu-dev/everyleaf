@@ -1,3 +1,3 @@
 class Task < ApplicationRecord
-    validates :title, :status, :deadline, presence: true
+    validates :title, :status, :deadline, :priority, presence: true
 end
