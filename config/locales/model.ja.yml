@@ -1,0 +1,17 @@
+ja: 
+ activerecord: 
+ models: 
+ entry: entry 
+ user: user 
+ attributes: 
+ entry: 
+ meal_type: meal type 
+ 
+ user: 
+ username: username 
+ name: name 
+ email: Email address 
+ current_password: current password 
+ password: password 
+ password_confirmation: Confirmation password 
+ remember_me: remember login
