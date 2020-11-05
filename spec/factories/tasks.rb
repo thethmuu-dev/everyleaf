@@ -1,14 +1,13 @@
 FactoryBot.define do
   factory :task do
-    # Please change the following contents according to the column name actually created
-    title { 'New Title' }
+    title { 'Read Diver' }
     status { 'Incompleted' }
-    deadline { 'Oct 3' }
+    deadline { 'Nov 7' }
   end
 
-  factory :second_task, class: Task do
-    title { 'Title No 2' }
-    status { 'Content for No 2' }
-    deadline { 'Oct 3' }
+  factory :task2, class: Task do
+    title { 'Write Codes' }
+    status { 'Incompleted' }
+    deadline { 'Nov 7' }
   end
 end
