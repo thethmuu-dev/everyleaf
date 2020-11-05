@@ -14,7 +14,7 @@ RSpec.describe "Tasks", type: :model do
         expect(task).not_to be_valid
       end
     end
-    context 'If the task deadlint is empty' do
+    context 'If the task deadline is empty' do
       it 'Task creation fail will occur' do
         task = Task.new(title: 'Spec test', status: 'Incompleted', deadline: '')
         expect(task).not_to be_valid

@@ -5,16 +5,16 @@ RSpec.describe 'Task management function', type: :system do
     context 'When creating a new task' do
       before(:each) do
         visit root_path
-        click_link "New Task"
-        within("form") do
-          fill_in "Title", with: "Test Title"
-          fill_in "Deadline", with: "10pm"
+        click_link 'New Task'
+        within('form') do
+          fill_in 'Title', with: 'Test Title'
+          fill_in 'Deadline', with: '10pm'
           select 'Incompleted', from: :task_status
-          click_button "Save"
+          click_button 'Save'
         end
       end
       it 'The created task is displayed' do
-        expect(page).to have_content("Task Added")
+        expect(page).to have_content('Task Added')
       end
     end
   end
@@ -33,13 +33,13 @@ RSpec.describe 'Task management function', type: :system do
     end
   end
   describe 'Detailed display function' do
-     context 'When transitioned to any task details screen' do
-        task = FactoryBot.create(:task, title: 'task')
-       it 'The content of the relevant task is displayed' do
+    context 'When transitioned to any task details screen' do
+      task = FactoryBot.create(:task, title: 'task')
+      it 'The content of the relevant task is displayed' do
         visit tasks_path
-        click_link "➱", match: :first
+        click_link '➱', match: :first
         expect(page).to have_content 'task'
-       end
-     end
+      end
+    end
   end
 end
