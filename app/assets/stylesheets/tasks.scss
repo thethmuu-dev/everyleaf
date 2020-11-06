@@ -1,3 +1,13 @@
-// Place all the styles related to the Tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-input {
+    border-radius: .2rem;
+    font-size: .875rem;
+    border: 1px solid #ced4da;
+    line-height: 1.5;
+    margin-right: .5rem;
+    outline: none;
+}
+
+.search-select {
+    background-color: white;
+    padding: .2rem;
+}
