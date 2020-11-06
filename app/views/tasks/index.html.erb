@@ -1,5 +1,20 @@
-<%= link_to 'New Task', new_task_path, class: "btn btn-sm btn-info" %>
-<div class="row mt-5">
+<div class="row my-4">
+  <div class="col">
+    <%= link_to 'New Task', new_task_path, class: "btn btn-sm btn-info" %>
+  </div>
+  <div class="col-md-4 ml-auto">
+    <div class="d-flex justify-content-between">
+      <span>Sort By : </span>
+    
+      <%= link_to "Creation", sorting: "created_at desc" %>
+    
+      <%= link_to "Expiration", sorting: "expired_at desc" %>
+    
+      <%= link_to "Priority", sorting: "priority desc" %>
+    </div>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-10 mx-auto">
     <table class="table table-sm">
       <thead class="thead-dark">
@@ -17,7 +32,7 @@
         <tr>
             <td><%= task.title %></td>
             <td><%= task.status %></td>
-            <td><%= task.deadline %></td>
+            <td><%= task.expired_at.to_s(:long) %></td>
             <td><%= task.details %></td>
             <td><%= task.priority %></td>
             <td>

@@ -8,8 +8,11 @@ RSpec.describe 'Task management function', type: :system do
         click_link 'New Task'
         within('form') do
           fill_in 'Title', with: 'Test Title'
-          fill_in 'Deadline', with: '10pm'
+          select '2020', from: :task_expired_at_1i
+          select 'November', from: :task_expired_at_2i
+          select '6', from: :task_expired_at_3i
           select 'Incompleted', from: :task_status
+          select 'Medium', from: :task_priority
           click_button 'Save'
         end
       end

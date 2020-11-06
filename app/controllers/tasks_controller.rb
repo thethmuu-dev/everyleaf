@@ -2,7 +2,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @sorting = params[:sorting]
+    if @sorting
+      @tasks = Task.all.order(@sorting).paginate(page: params[:page], per_page: 5)
+    else
+      @tasks = Task.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    end
   end
 
   def new
@@ -49,6 +54,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :details, :deadline, :status, :priority)
+    params.require(:task).permit(:title, :details, :expired_at, :status, :priority)
   end
 end

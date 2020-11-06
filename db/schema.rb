@@ -18,17 +18,17 @@ ActiveRecord::Schema.define(version: 2020_09_29_101720) do
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
     t.text "details"
-    t.string "deadline"
-    t.string "status"
-    t.string "priority"
+    t.datetime "expired_at", null: false
+    t.string "status", null: false
+    t.string "priority", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
