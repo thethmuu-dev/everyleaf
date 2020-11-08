@@ -3,13 +3,13 @@ FactoryBot.define do
     title { 'Read Diver' }
     status { 'Incompleted' }
     expired_at { '2020-11-06 20:08:00 +0630' }
-    priority { 'Medium' }
+    priority { 'Low' }
   end
 
   factory :task2, class: Task do
     title { 'Write Codes' }
     status { 'Incompleted' }
     expired_at { '2020-11-06 20:08:00 +0630' }
-    priority { 'Medium' }
+    priority { 'Low' }
   end
 end

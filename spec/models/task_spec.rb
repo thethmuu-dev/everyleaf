@@ -27,4 +27,34 @@ RSpec.describe "Tasks", type: :model do
       end
     end
   end
+
+  describe 'Searching test' do
+    FactoryBot.create(:task)
+    FactoryBot.create(:task2)
+    context 'Search by title' do
+      it 'Search by title passes' do
+        tasks = Task.search('Read Diver', '')
+        tasks.each do |task|
+          expect(task.title).to eq('Read Diver')
+        end
+      end
+    end
+    context 'Search by status' do
+      it 'Search by status passes' do
+        tasks = Task.search('', 'Incompleted')
+        tasks.each do |task|
+          expect(task.status).to eq('Incompleted')
+        end
+      end
+    end
+    context 'Search by both title and status' do
+      it 'Search by title and status passes' do
+        tasks = Task.search('Read Diver', 'Incompleted')
+        tasks.each do |task|
+          expect(task.title).to eq('Read Diver')
+          expect(task.status).to eq('Incompleted')
+        end
+      end
+    end
+  end
 end
