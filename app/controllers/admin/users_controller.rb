@@ -31,8 +31,13 @@ class Admin::UsersController < ApplicationController
 
   def toggle
     @user = User.find(params[:id])
-    @user.toggle!(:is_admin)
-    @user.save
+    @admins = User.where(is_admin: true)
+    if @admins.count == 1
+      flash[:notice] = "There must be at least one admin user"
+    else
+      @user.toggle!(:is_admin)
+      @user.save
+    end
     redirect_to admin_users_path
   end
 
