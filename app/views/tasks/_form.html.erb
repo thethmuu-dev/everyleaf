@@ -9,8 +9,8 @@
         <%= f.text_field :title, class: "form-control form-control-sm" %> 
       </div>
       <div class="form-group">
-        <%= f.label :deadline %>
-        <%= f.text_field :deadline, class: "form-control form-control-sm" %> 
+        <%= f.label :expired_at %>
+        <%= f.datetime_select :expired_at, class: "form-control form-control-sm" %> 
       </div>
       <div class="form-group">
         <%= f.label :status %>
@@ -18,11 +18,11 @@
       </div>
       <div class="form-group">
         <%= f.label :priority %>
-        <%= f.text_field :priority, class: "form-control form-control-sm" %> 
+        <%= f.select :priority, ['Low', 'Medium', 'High'], class: 'form-control form-control-sm' %>
       </div>
       <div class="form-group">
         <%= f.label :details %>
-        <%= f.text_area :details, class: "form-control form-control-sm", row: '6' %> 
+        <%= f.text_area :details, class: "form-control form-control-sm" %> 
       </div>
       <div class="text-center">
         <%= link_to "Cancel", tasks_path, class: 'btn btn-outline-dark btn-sm' %> 

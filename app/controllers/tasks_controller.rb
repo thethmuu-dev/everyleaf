@@ -1,8 +1,22 @@
 class TasksController < ApplicationController
+  # paginates_per 3
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @sorting = params[:sorting]
+    if @sorting
+      @tasks = Task.all.order(@sorting).page(params[:page])
+    else
+      @tasks = Task.all.order(created_at: :desc).page(params[:page])
+    end
+  end
+
+  def search
+    if params[:search_by_title].present? || params[:search_by_status].present?
+      @tasks = Task.search(params[:search_by_title], params[:search_by_status])
+    else
+      redirect_to tasks_path
+    end
   end
 
   def new
@@ -49,6 +63,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :details, :deadline, :status, :priority)
+    params.require(:task).permit(:title, :details, :expired_at, :status, :priority)
   end
 end
