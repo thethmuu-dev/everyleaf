@@ -39,10 +39,13 @@
     </nav>
     
     <div class="container mt-4">
-      
-      <% flash.each do |key, value| %> 
-        <%= content_tag(:div, value, class: "#{key}") %> 
-      <% end %>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <% flash.each do |key, value| %> 
+            <%= content_tag(:div, value, class: "alert alert-warning text-center") %> 
+          <% end %>
+        </div>
+      </div>
 
       <%= yield %>
     </div>
