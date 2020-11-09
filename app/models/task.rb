@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   validates :title, :status, :expired_at, :priority, presence: true
 
+  belongs_to :user
+
   # enum priority: { Low: 0, Medium: 1, High: 2 }
 
   scope :search, ->(title, status) {
