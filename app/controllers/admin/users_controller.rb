@@ -68,11 +68,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:name, :email, :password)
   end
 
   def require_owner
-    if current_user != @user && !current_user.admin?
+    if current_user != @user && !current_user.is_admin?
       flash[:alert] = "You can only manage your own account"
       redirect_to tasks_path
     end

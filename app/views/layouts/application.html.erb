@@ -17,6 +17,11 @@
         <a class="navbar-brand" href="/">EveryLeaf</a>
           <ul class="nav">
             <% if logged_in? %>
+              <% if current_user.is_admin? %>
+              <li class="nav-item">
+                <%= link_to "Dashboard", admin_users_path, class: "nav-link text-white" %> 
+              </li>
+              <% end %>
               <li class="nav-item">
                 <%= link_to "View Tasks", tasks_path, class: "nav-link text-white" %> 
               </li>
