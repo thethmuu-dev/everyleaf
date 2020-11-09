@@ -1,9 +1,14 @@
 require 'rails_helper'
-RSpec.describe 'Task management function', type: :system do
 
+RSpec.describe "Tasks", type: :feature do
   describe 'New creation function' do
     context 'When creating a new task' do
       before(:each) do
+        visit root_path
+      
+        fill_in "Email", with: "thet@gmail.com"
+        fill_in "Password", with: "thetthet"
+        click_button "Log in"
         visit tasks_path
         click_link 'New Task'
         within('form') do
@@ -24,9 +29,16 @@ RSpec.describe 'Task management function', type: :system do
 
   describe 'List display function' do
     context 'When transitioning to the list screen' do
+      before(:each) do
+        visit root_path
+      
+        fill_in "Email", with: "thet@gmail.com"
+        fill_in "Password", with: "thetthet"
+        click_button "Log in"
+      end
       # Create a task for use in testing
       task = FactoryBot.create(:task)
-      it 'The created task list is displayed' do
+      it 'The task list is displayed' do
         # Transition to task list page
         visit tasks_path
         # The Text "Task" Appears On The Visited (Transitioned) Page (Task List Page) 
@@ -49,6 +61,13 @@ RSpec.describe 'Task management function', type: :system do
   end
 
   describe 'Detailed display function' do
+    before(:each) do
+      visit root_path
+      
+      fill_in "Email", with: "thet@gmail.com"
+      fill_in "Password", with: "thetthet"
+      click_button "Log in"
+    end
     context 'When transitioned to any task details screen' do
       task = FactoryBot.create(:task, title: 'task')
       it 'The content of the relevant task is displayed' do
@@ -196,5 +215,4 @@ RSpec.describe 'Task management function', type: :system do
       end
     end
   end
-
 end
