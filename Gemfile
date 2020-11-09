@@ -29,8 +29,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'kaminari'
 
-gem 'rails_admin'
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
