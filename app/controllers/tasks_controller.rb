@@ -71,7 +71,7 @@ class TasksController < ApplicationController
 
   def require_owner
     if current_user != @task.user && !current_user.admin?
-      flash[:alert] = "You can only edit or delete your own posts"
+      flash[:alert] = "You can only edit or delete your own tasks"
       redirect_to @task
     end
   end
