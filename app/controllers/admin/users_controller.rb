@@ -9,8 +9,8 @@ class Admin::UsersController < ApplicationController
       redirect_to tasks_path
     else
       @user = User.new
-      @admins = User.where(is_admin: true).order(created_at: :asc).page(params[:page])
-      @users = User.where(is_admin: false).order(created_at: :asc).page(params[:page])
+      @admins = User.includes(:tasks).where(is_admin: true).order(created_at: :asc).page(params[:page])
+      @users = User.includes(:tasks).where(is_admin: false).order(created_at: :asc).page(params[:page])
     end
   end
 
