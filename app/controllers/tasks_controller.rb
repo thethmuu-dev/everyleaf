@@ -1,12 +1,13 @@
 class TasksController < ApplicationController
+  # paginates_per 3
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @sorting = params[:sorting]
     if @sorting
-      @tasks = Task.all.order(@sorting).paginate(page: params[:page], per_page: 5)
+      @tasks = Task.all.order(@sorting).page(params[:page])
     else
-      @tasks = Task.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+      @tasks = Task.all.order(created_at: :desc).page(params[:page])
     end
   end
 
