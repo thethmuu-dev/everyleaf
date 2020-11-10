@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  # paginates_per 3
+  
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-  # before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_owner, only: [:edit, :update, :destroy]
 
   def index
     @sorting = params[:sorting]
