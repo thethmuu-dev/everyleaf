@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :admin do
-    name { "hmuu" }
-    email { "hmuu@gmail.com" }
-    password { "hmuuhmuu" }
-    password_digest { "hmuuhmuu" }
+    name { Faker::Name.unique.first_name }
+    email { Faker::Internet.unique.email }
+    password { "password" }
+    password_digest { "password" }
     is_admin { ture }
   end
 end

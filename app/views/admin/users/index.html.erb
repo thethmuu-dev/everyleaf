@@ -3,22 +3,22 @@
     <h1>Admin Dashboard</h1>
   </div>
 
-  <h3>Create new user</h3>
+  <h4>Create new user</h4>
   <%= form_with(model: @user, url: "/admin/users", method: "post", local: true ) do |form| %>
-    <div id="wrapper" class="mb-5">
-      <div class="task">
+    <div id="wrapper" class="row align-items-end mt-3 mb-5">
+      <div class="task col">
         <%= form.label :name %> <br>
         <%= form.text_field :name %>
       </div>
-      <div class="task">
+      <div class="task col">
         <%= form.label :email %> <br>
         <%= form.email_field :email %>
       </div>
-      <div class="task">
+      <div class="task col">
         <%= form.label :password %> <br>
         <%= form.password_field :password %>
       </div>
-      <div class="task">
+      <div class="task col">
         <%= form.label :password_confirmation %> <br>
         <%= form.password_field :password_confirmation %>
       </div>
