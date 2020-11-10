@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      flash[:alert] = "Already Logged In!"
+      redirect_to tasks_path
+    end
   end
 
   def create
