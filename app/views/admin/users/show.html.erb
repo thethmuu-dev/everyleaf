@@ -1,0 +1,46 @@
+<h1>Showing User Details</h1>
+
+<p><strong>Name: </strong><%= @user.name %></p>
+<p><strong>Email: </strong><%= @user.email %></p>
+<p>
+  <%= pluralize(@user.tasks.count, "task") %>
+</p>
+<%= link_to 'Dashboard', admin_users_path %> |
+<%= link_to 'Edit', edit_admin_user_path(@user)%> |
+<%= link_to 'Delete', admin_user_path(@user), method: :delete,
+    data: { confirm: "Are you sure?" }%>
+
+<% if @tasks.present? %>
+  <h2>Tasks</h2>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">ID</th>
+        <th class="left">Name</th>
+        <th class="left">Detail</th>
+        <th class="left">Expired at</th>
+        <th class="left">Status</th>
+        <th class="left">Priority</th>
+        <th colspan=2>Actions</th>
+      </tr>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.id %></td>
+          <td><%= task.title %></td>
+          <td><%= task.details %></td>
+          <td><%= task.expired_at %></td>
+          <td><%= task.status %></td>
+          <td><%= task.priority %></td>
+          
+          <td class="action"><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td class="action"><%= link_to 'Delete', task_path(task),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <h3>
+    <%= paginate @tasks %>
+  </h3>
+<% end %>

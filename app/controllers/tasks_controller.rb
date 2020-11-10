@@ -56,7 +56,11 @@ class TasksController < ApplicationController
   def destroy
     if @task.destroy
       flash[:notice] = "Task Deleted"
-      redirect_to tasks_path
+      if current_user.is_admin?
+        redirect_to admin_users_path
+      else
+        redirect_to tasks_path
+      end
     end
   end
 

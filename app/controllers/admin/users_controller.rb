@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params) 
     if @user.save
       flash[:notice] = "New user created"
       redirect_to admin_users_path
@@ -31,13 +31,8 @@ class Admin::UsersController < ApplicationController
 
   def toggle
     @user = User.find(params[:id])
-    @admins = User.where(is_admin: true)
-    if @admins.count == 1
-      flash[:notice] = "There must be at least one admin user"
-    else
-      @user.toggle!(:is_admin)
-      @user.save
-    end
+    @user.toggle!(:is_admin)
+    @user.save
     redirect_to admin_users_path
   end
 
@@ -55,7 +50,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @admins = User.where(is_admin: true)
-    if @admins.count == 1
+    if @admins.count == 1 && @user.is_admin
       flash[:notice] = "There must be at least one admin user"
       redirect_to admin_users_path
     else
