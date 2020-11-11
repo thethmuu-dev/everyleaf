@@ -9,7 +9,7 @@ RSpec.feature "Users", type: :feature do
         click_link "Sign up"
         within("form") do
           fill_in('Name', with: 'Aung')
-          fill_in('Email', with: 'aybg@gmail.com')
+          fill_in('Email', with: 'aung@gmail.com')
           fill_in('Password', with: 'aungaung')
           fill_in('Password confirmation', with: 'aungaung')
         end
@@ -48,8 +48,8 @@ RSpec.feature "Users", type: :feature do
     #   before(:each) do
     #     visit root_path
     #     within("form") do
-    #       fill_in('Username', with: 'szyar')
-    #       fill_in('Password', with: 'batman')
+    #       fill_in('Email', with: 'thet@gmail.com')
+    #       fill_in('Password', with: 'thetthet')
     #     end
     #   end
     #   it "Detail screen test pass" do
@@ -62,13 +62,13 @@ RSpec.feature "Users", type: :feature do
     #   before(:each) do
     #     visit root_path
     #     within("form") do
-    #       fill_in('Username', with: 'test')
+    #       fill_in('Email', with: 'test')
     #       fill_in('Password', with: 'hellotest')
     #     end
     #   end
     #   it "Transition to task list screen" do
     #     click_button "Log In"
-    #     user = User.find_by(username: "admin")
+    #     user = User.find_by(Email: "admin")
     #     visit user_path(user.id)
     #     expect(page).to have_content("Task List")
     #   end
@@ -77,8 +77,8 @@ RSpec.feature "Users", type: :feature do
     #   before(:each) do
     #     visit root_path
     #     within("form") do
-    #       fill_in('Username', with: 'szyar')
-    #       fill_in('Password', with: 'batman')
+    #       fill_in('Email', with: 'thet@gmail.com')
+    #       fill_in('Password', with: 'thetthet')
     #       click_button "Log In"
     #     end
     #   end
