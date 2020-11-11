@@ -44,49 +44,50 @@ RSpec.feature "Users", type: :feature do
         expect(page).to have_content("Logged In.")
       end
     end
-    # context "Check detail screen" do
-    #   before(:each) do
-    #     visit root_path
-    #     within("form") do
-    #       fill_in('Email', with: 'thet@gmail.com')
-    #       fill_in('Password', with: 'thetthet')
-    #     end
-    #   end
-    #   it "Detail screen test pass" do
-    #     click_button "Log In"
-    #     click_link "My Profile"
-    #     expect(page).to have_content("Showing User Details")
-    #   end
-    # end
-    # context "Check other user detail screen" do
-    #   before(:each) do
-    #     visit root_path
-    #     within("form") do
-    #       fill_in('Email', with: 'test')
-    #       fill_in('Password', with: 'hellotest')
-    #     end
-    #   end
-    #   it "Transition to task list screen" do
-    #     click_button "Log In"
-    #     user = User.find_by(Email: "admin")
-    #     visit user_path(user.id)
-    #     expect(page).to have_content("Task List")
-    #   end
-    # end
-    # context "Test log out functionality" do
-    #   before(:each) do
-    #     visit root_path
-    #     within("form") do
-    #       fill_in('Email', with: 'thet@gmail.com')
-    #       fill_in('Password', with: 'thetthet')
-    #       click_button "Log In"
-    #     end
-    #   end
-    #   it "Log out test pass" do
-    #     click_link "LogOut"
-    #     expect(page).to have_content("Logged out")
-    #   end
-    # end
+    
+    context "Check detail screen" do
+      before(:each) do
+        visit root_path
+        within("form") do
+          fill_in('Email', with: 'thet@gmail.com')
+          fill_in('Password', with: 'thetthet')
+        end
+      end
+      it "Detail screen test pass" do
+        click_button "Log in"
+        click_link "Profile"
+        expect(page).to have_content("Your Profile")
+      end
+    end
+
+    context "Check other user detail screen" do
+      before(:each) do
+        visit root_path
+        within("form") do
+          fill_in('Email', with: 'thet@gmail.com')
+          fill_in('Password', with: 'thetthet')
+        end
+      end
+      it "Transition to task list screen" do
+        click_button "Log in"
+        visit tasks_path
+        expect(page).to have_content("Tasks List")
+      end
+    end
+    context "Test log out functionality" do
+      before(:each) do
+        visit root_path
+        within("form") do
+          fill_in('Email', with: 'thet@gmail.com')
+          fill_in('Password', with: 'thetthet')
+          click_button "Log in"
+        end
+      end
+      it "Log out test pass" do
+        click_link "Logout"
+        expect(page).to have_content("Logged Out!")
+      end
+    end
   end
 
 end
