@@ -13,9 +13,7 @@ RSpec.describe "Tasks", type: :feature do
         click_link 'New Task'
         within('form') do
           fill_in 'Title', with: 'Test Title'
-          select '2020', from: :task_expired_at_1i
-          select 'November', from: :task_expired_at_2i
-          select '6', from: :task_expired_at_3i
+          fill_in 'Expired at', with: '2020-11-11'
           select 'Incompleted', from: :task_status
           select 'Medium', from: :task_priority
           click_button 'Save'
@@ -94,9 +92,7 @@ RSpec.describe "Tasks", type: :feature do
         click_link 'New Task'
         within('form') do
           fill_in 'Title', with: 'Task 2'
-          select '2020', from: :task_expired_at_1i
-          select 'November', from: :task_expired_at_2i
-          select '6', from: :task_expired_at_3i
+          fill_in 'Expired at', with: '2020-11-11'
           select 'Incompleted', from: :task_status
           select 'Medium', from: :task_priority
           click_button 'Save'
@@ -123,9 +119,7 @@ RSpec.describe "Tasks", type: :feature do
         click_link 'New Task'
         within('form') do
           fill_in 'Title', with: 'Task 2'
-          select '2020', from: :task_expired_at_1i
-          select 'November', from: :task_expired_at_2i
-          select '7', from: :task_expired_at_3i
+          fill_in 'Expired at', with: '2020-11-11'
           select 'Incompleted', from: :task_status
           select 'Medium', from: :task_priority
           click_button 'Save'
@@ -152,15 +146,13 @@ RSpec.describe "Tasks", type: :feature do
         click_link 'New Task'
         within('form') do
           fill_in 'Title', with: 'Task 2'
-          select '2020', from: :task_expired_at_1i
-          select 'November', from: :task_expired_at_2i
-          select '7', from: :task_expired_at_3i
+          fill_in 'Expired at', with: '2020-11-11'
           select 'Incompleted', from: :task_status
           select 'Medium', from: :task_priority
           click_button 'Save'
           tasks_list = Task.all.order(priority: :desc)
           task = tasks_list.first
-          expect(task.title).to eq("Read Diver")
+          expect(task.title).to eq("Task 2")
         end
     end
   end
