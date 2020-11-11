@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="text-center mb-2">
+    <h1>Admin Dashboard</h1>
+  </div>
+
+  <h4>Create new user</h4>
+  <%= form_with(model: @user, url: "/admin/users", method: "post", local: true ) do |form| %>
+    <div id="wrapper" class="row align-items-end mt-3 mb-5">
+      <div class="task col">
+        <%= form.label :name %> <br>
+        <%= form.text_field :name %>
+      </div>
+      <div class="task col">
+        <%= form.label :email %> <br>
+        <%= form.email_field :email %>
+      </div>
+      <div class="task col">
+        <%= form.label :password %> <br>
+        <%= form.password_field :password %>
+      </div>
+      <div class="task col">
+        <%= form.label :password_confirmation %> <br>
+        <%= form.password_field :password_confirmation %>
+      </div>
+      <div class="submit mt-3">
+        <%= form.submit class: "btn btn-sm btn-success" %>
+      </div>
+    </div>
+  <% end %>
+
+  <h3>Admins</h3>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">name</th>
+        <th class="left">Email</th>
+        <th class="left">Tasks</th>
+        <th colspan=4>Actions</th>
+      </tr>
+      <% @admins.each do |user| %>
+      <tr>
+        <% if logged_in? && (user == current_user ||  current_user.is_admin?) %>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.tasks.count %></td>
+          <td class="action"><%= link_to 'Remove Admin', admin_path(user), class: "btn btn-sm btn-danger" %></td>
+          <td class="action"><%= link_to 'Show', admin_user_path(user) %></td>
+          <td class="action"><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+          <td class="action"><%= link_to 'Delete', admin_user_path(user),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div> <br>
+
+  <h3>Users</h3>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">name</th>
+        <th class="left">Email</th>
+        <th class="left">Tasks</th>
+        <th colspan=4>Actions</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <% if logged_in? && (user == current_user ||  current_user.is_admin?) %>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.tasks.count %></td>
+          <td class="action"><%= link_to 'Make Admin', admin_path(user), class: "btn btn-sm btn-success" %></td>
+          <td class="action"><%= link_to 'Show', admin_user_path(user) %></td>
+          <td class="action"><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+          <td class="action"><%= link_to 'Delete', admin_user_path(user),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div> <br>
+
+  <div>
+      <%= paginate @users %>
+  </div>
+</div>

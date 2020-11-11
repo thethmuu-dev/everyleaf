@@ -1,5 +1,8 @@
 class Task < ApplicationRecord
+  before_validation :sample_details
   validates :title, :status, :expired_at, :priority, presence: true
+
+  belongs_to :user
 
   # enum priority: { Low: 0, Medium: 1, High: 2 }
 
@@ -18,4 +21,11 @@ class Task < ApplicationRecord
                                 "%#{@name_param}%", "%#{@status_param}%")
     end
   }
+
+  private
+  def sample_details
+    if details.blank?
+      self.details = 'Description of the Task'
+    end
+  end
 end

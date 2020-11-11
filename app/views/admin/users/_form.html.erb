@@ -1,0 +1,33 @@
+<h1>Edit User Details</h1>
+
+<%= form_with(model: @user, url: "/admin/users", method: "post", local: true) do |form| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @user.errors.count %> There are errors. </h2>
+      <% @user.errors.full_messages.each do |msg| %>
+      <%= msg %>
+      <% end %><%= form.label :name %>
+  </div>
+  <% end %>
+  <div id="wrapper">
+    <div class="task">
+      <%= form.label :name %> <br>
+      <%= form.text_field :name %>
+    </div>
+    <div class="task">
+      <%= form.label :email %> <br>
+      <%= form.email_field :email %>
+    </div>
+    <div class="task">
+      <%= form.label :password %> <br>
+      <%= form.password_field :password %>
+    </div>
+    <div class="task">
+      <%= form.label :password_confirmation %> <br>
+      <%= form.password_field :password_confirmation %>
+    </div>
+    <div class="submit">
+      <%= form.submit %>
+    </div>
+  </div>
+<% end %>

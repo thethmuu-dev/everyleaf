@@ -22,13 +22,15 @@ RSpec.describe "Tasks", type: :model do
     end
     context 'If all necessary field provided' do
       it 'Validation passes' do
-        task = Task.new(title: 'Pass', status: 'Incompleted', priority: 'Medium', expired_at: '2020-11-06 20:08:00 +0630')
+        # FactoryBot.create(:user)
+        task = Task.new(title: 'Pass', status: 'Incompleted', priority: 'Medium', expired_at: '2020-11-06 20:08:00 +0630', user_id: 1)
         expect(task).to be_valid
       end
     end
   end
 
   describe 'Searching test' do
+    FactoryBot.create(:user)
     FactoryBot.create(:task)
     FactoryBot.create(:task2)
     context 'Search by title' do
