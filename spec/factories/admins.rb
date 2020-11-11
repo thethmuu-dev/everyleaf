@@ -4,6 +4,6 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { "password" }
     password_digest { "password" }
-    is_admin { ture }
+    is_admin { true }
   end
 end
