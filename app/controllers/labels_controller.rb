@@ -23,7 +23,7 @@ class LabelsController < ApplicationController
   end
 
   def show
-
+    @tasks = @label.tasks
   end
 
   def edit

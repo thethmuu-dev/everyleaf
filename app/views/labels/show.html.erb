@@ -1,1 +1,24 @@
-<h3><%= @label.name %></h3>
+<h3>Label: <%= @label.name.capitalize %></h3>
+<div class="row mt-5">
+    <% @tasks.each do |task| %>
+    <div class="col-md-4 mx-auto">
+        <div class="card shadow">
+        <div class="card-header bg-white">
+            <%= task.title %> |
+            <small class="font-italic"><%= task.status %></small>
+        </div>
+        <div class="card-body">
+            <% if task.labels.any? %>
+            <%= render task.labels %>
+            <% end %>
+            <p class="card-text"><%= task.details %></p>
+            Expired At: <p class="card-text"><%= task.expired_at.to_s(:long) %></p>
+            Priority: <span class="card-text"><%= task.priority %></span>
+        </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+<div class="text-center mt-4">
+    <%= link_to "All Tasks", tasks_path, class: 'btn btn-outline-dark btn-sm' %>
+</div>
