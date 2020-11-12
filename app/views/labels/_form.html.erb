@@ -1,0 +1,25 @@
+<% if @label.errors.any? %> 
+  <div id="error_explanation"> 
+    <ul> 
+      <% @label.errors.full_messages.each do |message| %> 
+        <li><%= message %></li> 
+      <% end %> 
+    </ul> 
+  </div> 
+<% end %> 
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title text-center"><%= title %></h5>
+    <%= form_with(model: @label, local: true) do |f| %> 
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control form-control-sm" %> 
+      </div>
+      <div class="text-center">
+        <%= link_to "Cancel", labels_path, class: 'btn btn-outline-dark btn-sm' %> 
+        <%= f.submit "Save", class: "btn btn-sm btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>

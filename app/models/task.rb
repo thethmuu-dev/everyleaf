@@ -3,6 +3,8 @@ class Task < ApplicationRecord
   validates :title, :status, :expired_at, :priority, presence: true
 
   belongs_to :user
+  has_many :label_tasks
+  has_many :labels, through: :label_tasks
 
   # enum priority: { Low: 0, Medium: 1, High: 2 }
 
