@@ -1,9 +1,14 @@
 <div class="row mt-5">
   <div class="col-md-4 mx-auto">
     <div class="card shadow">
+      <div class="card-header bg-white">
+        <%= @task.title %> |
+        <small class="font-italic"><%= @task.status %></small>
+      </div>
       <div class="card-body">
-        <h5 class="card-title"><%= @task.title %></h5>
-        <h6 class="card-subtitle badge badge-warning"><%= @task.status %></h6>
+        <% if @task.labels.any? %>
+          <%= render @task.labels %>
+        <% end %>
         <p class="card-text"><%= @task.details %></p>
         Expired At: <p class="card-text"><%= @task.expired_at.to_s(:long) %></p>
         Priority: <span class="card-text"><%= @task.priority %></span>

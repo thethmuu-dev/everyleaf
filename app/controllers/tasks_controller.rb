@@ -70,7 +70,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :details, :expired_at, :status, :priority)
+    params.require(:task).permit(:title, :details, :expired_at, :status, :priority, label_ids: [])
   end
 
   def require_owner
