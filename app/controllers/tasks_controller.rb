@@ -16,6 +16,8 @@ class TasksController < ApplicationController
   def search
     if params[:search_by_title].present? || params[:search_by_status].present?
       @tasks = Task.search(params[:search_by_title], params[:search_by_status])
+    elsif params[:search_by_label].present?
+      @tasks = Label.find(params[:search_by_label]).tasks
     else
       redirect_to tasks_path
     end
